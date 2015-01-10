@@ -9,6 +9,15 @@ personalizadas a través de los ```Dockerfile```, que son usados para crear imá
   * Otro para redis
   * Otro para apache
 
+## Prerequisitos
+
+Para que la aplicación funcione hace falta instalar las dependencias con composer
+
+```bash
+$ wget http://getcomposer.org/composer.phar
+$ php composer.phar install
+```
+
 ## Un solo container
 
 **NOTA: Este ejemplo no crea imágenes personalizadas. Y no se puede vincular con Redis**
