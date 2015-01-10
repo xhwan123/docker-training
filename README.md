@@ -11,7 +11,7 @@ personalizadas a través de los ```Dockerfile```, que son usados para crear imá
 
 ## Un solo container
 
-** NOTA: Este ejemplo no crea imágenes personalizadas. Y no se puede vincular con Redis**
+**NOTA: Este ejemplo no crea imágenes personalizadas. Y no se puede vincular con Redis**
 
 Para el ejemplo vamos a usar la imagen (php:5.6-cli)[https://registry.hub.docker.com/_/php/] para crear un contenedor que
 ejecuta la aplicación a través del built-in webserver de PHP:
@@ -40,8 +40,7 @@ previamente una imagen personalizada para preparar todo el runtime.
 
 ## El código fuente y Redis
 
-Crear un contenedor para el código fuente y para redis es, cómo ya hemos visto en la formación, a través de la acción
-```run```.
+Crear un contenedor para el código fuente y para redis es, cómo ya hemos visto en la formación, a través de la acción ```run```.
 
 ```bash
 $ docker run -v "$(pwd):/var/www" --name source_code ubuntu
@@ -110,5 +109,11 @@ $ open "http://$(boot2docker ip)/redis/get-value"
 ```
 
 Deberíamos poder ejecutar la aplicación sin problemas.
+
+## Referencias
+
+* (The Docker UserGuide)[https://docs.docker.com/userguide/]
+* (The Docker CommandLine)[https://docs.docker.com/reference/commandline/cli/]
+* (The Dockerfile Reference)[https://docs.docker.com/reference/builder/]
 
 Happy *Dockering*! :)
