@@ -1,0 +1,9 @@
+/app/cache/*
+!/app/cache/.gitkeep
+/app/logs/*
+!/app/logs/.gitkeep
+/bin
+/vendor
+/web/bundles
+composer.phar
+/app/phpunit.xml
