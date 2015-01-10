@@ -69,10 +69,10 @@ $ docker run -d -p 80:80 --volumes-from="source_code" --link redis:redis --name 
 
 * ```--volumes-from="source_code"```. Con este parámetro le decimos a Docker que **monte los directorios compartidos por el contenedor _source_code_ en el contenedor ```apache```**. Es decir, con este parámetro vamos a crear un directorio ```/var/www``` dentro del nuevo contenedor que estará vinculado con el directorio ```/var/www``` del contenedor ```source_code```.
 * ```--link redis:redis```. Con este parámetro Docker establece un *enlace* entre el contendor ```redis``` anteriormente creado y el contenedor ```apache```. Este parámetro, toma la forma de *NOMBRE-DEL-CONTENEDOR:ALIAS*. Además establece una nueva entrada en el archivo ```/etc/hosts``` del contenedor ```apache``` con un nombre de host del ALIAS apuntando a la IP del contenedor vinculado. Es decir, dentro del archivo de hosts, en este caso, existirá una entrada parecida a: ```redis <IP del contenedor de redis>```. Además establece variables de entorno con la IP y el puerto expuestos por el contenedor ```redis``` para que podamos interactuar con él
-    * <name>\_PORT\_<port>\_<protocol> contendrá la URL de referencia al puerto. Dónde <name> es el alias especificados (por ej. tcp://172.17.0.82:8080). Está URL se dividirá luego en 3 variables de entorno. En este caso se establecerá la variable de entorno: ```REDIS_PORT_6379_TCP```.
-    * <name>\_PORT\_<port>\_<protocol>\_ADDR contendrá la dirección IP de la url: ```REDIS_PORT_6379_TCP_ADDR=172.17.0.82```.
-    * <name>\_PORT\_<port>\_<protocol>\_PORT contendrá solo el número de puerto de la URL: ```REDIS_PORT_6379_TCP_PORT=6379```.
-    * <name>\_PORT\_<port>\_<protocol>\_PROTO contendrá solo el protocolo de la URL: ```REDIS_PORT_6379_TCP_PROTO=tcp```.
+    * ```<name>_PORT_<port>_<protocol>``` contendrá la URL de referencia al puerto. Dónde <name> es el alias especificados (por ej. ```tcp://172.17.0.82:8080```). Está URL se dividirá luego en 3 variables de entorno. En este caso se establecerá la variable de entorno: ```REDIS_PORT_6379_TCP```.
+    * ```<name>_PORT_<port>_<protocol>_ADDR``` contendrá la dirección IP de la url: ```REDIS_PORT_6379_TCP_ADDR=172.17.0.82```.
+    * ```<name>_PORT_<port>_<protocol>_PORT``` contendrá solo el número de puerto de la URL: ```REDIS_PORT_6379_TCP_PORT=6379```.
+    * ```<name>_PORT_<port>_<protocol>_PROTO``` contendrá solo el protocolo de la URL: ```REDIS_PORT_6379_TCP_PROTO=tcp```.
 
 Con esto si ejecutamos esto
 
@@ -86,8 +86,8 @@ Deberíamos poder ejecutar la aplicación sin problemas.
 
 ## Referencias
 
-* (The Docker UserGuide)[https://docs.docker.com/userguide/]
-* (The Docker CommandLine)[https://docs.docker.com/reference/commandline/cli/]
-* (The Dockerfile Reference)[https://docs.docker.com/reference/builder/]
+* **[The Docker UserGuide](https://docs.docker.com/userguide/)**
+* **[The Docker CommandLine](https://docs.docker.com/reference/commandline/cli/)**
+* **[The Dockerfile Reference](https://docs.docker.com/reference/builder/)**
 
 Happy *Dockering*! :)
