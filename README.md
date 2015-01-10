@@ -35,6 +35,12 @@ $ docker run -d -p 80:80 -v "$(pwd):/var/www" -w /var/www php:5.6-cli php -d dat
 * ```php:5.6-cli```. Con este parámetro le indicamos qué imagen debe ejecutar.
 * ```php -d date.timezone=Europe/Madrid app/console server:run 0.0.0.0:80 --verbose```. Con este parámetro le indicamos cómo vamos a ejecutar el servidor web interno de PHP.
 
+Habiendo levantado este contenedor, si accedemos al puerto 80 de la máquina local deberíamos poder visualizar la aplicación
+
+```bash
+$ open "http://$(boot2docker ip)"
+```
+
 # Tres contenedores
 
 En este ejemplo vamos a ejecutar la aplicación a través de tres contenedores. Dos contenedores no necesitarán crearse a través de una imagen personalizada: el del código fuente y el de redis. Mientras que el de apache, necesitará crear previamente una imagen personalizada para preparar todo el runtime.
