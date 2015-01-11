@@ -56,7 +56,9 @@ $ docker run -d --name redis redis:2.8
 
 ## Corriendo el servidor web
 
-Para ejecutar el servidor web, previamente vamos a tener que crear una imagen personalizada. Para ello vamos a usar la acción ```build``` de Docker, la cuál nos permitirá crear nuevas imágenes. La acción ```build``` de Docker precisa de los ```Dockerfile``` para crear las imágenes. Los ```Dockerfile``` son generalmente agrupaciones de acciones ```run```, aunque también pueden contener otras directivas. Para el caso del de apache usamos las directivas:
+Para ejecutar el servidor web, previamente vamos a tener que crear una imagen personalizada. Para ello vamos a usar la acción ```build``` de Docker, la cuál nos permitirá crear nuevas imágenes. La acción ```build``` de Docker precisa de los ```Dockerfile``` para crear las imágenes. Los ```Dockerfile``` son generalmente agrupaciones de acciones ```run```, aunque también pueden contener otras directivas. El ```Dockerfile``` para Apache se encuentra en la ruta [app/config/docker/apache/Dockerfile](https://github.com/atrapalo/docker-training/blob/master/app/config/docker/apache/Dockerfile).
+
+Para el caso usamos las directivas:
 
 * ```FROM```. Le indicamos a Docker cuál va a ser la imágen base a usar.
 * ```ENV```. Con esta directiva le indicamos a Docker que vamos a establecer una variable de entorno.
