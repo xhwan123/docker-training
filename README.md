@@ -101,10 +101,92 @@ $ open "http://$(boot2docker ip)/redis/get-value"
 
 Deberíamos poder ejecutar la aplicación sin problemas.
 
+# Modo alternativo. Usando docker-compose.
+
+Docker-compose nos permite manejar la ejecución de nuestros contenedores de modo sencillo a partir de un fichero de configuración.
+
+## Instalar docker-compose.
+
+```bash
+$ curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+$ chmod +x /usr/local/bin/docker-compose
+```
+
+## Definir los contenedores en un fichero.
+
+Creamos un fichero docker-compose.yml con el siguiente contenido:
+
+```yaml
+redis:
+  image: redis:2.8
+sourcecode:
+  image: ubuntu
+  volumes:
+  - ".:/var/www"
+apache:
+  image: atrapalo/docker-tutorial-apache
+  ports:
+  - 80:80
+  volumes_from:
+  - "sourcecode"
+  links:
+  - redis
+```
+
+**NOTA: Es importante haber creado previamente la imagen atrapalo/docker-tutorial-apache ya que es la única que no tenemos disponible en los repositorios de docker.**
+
+## Ejecutar.
+
+**Ejecución normal.**
+
+```bash
+$ docker-compose up
+```
+
+**Ejecución modo demonio.**
+
+```bash
+$ docker-compose up -d
+```
+
+**Opciones:**
+
+```bash
+$ docker-compose
+  Fast, isolated development environments using Docker.
+  
+  Usage:
+    docker-compose [options] [COMMAND] [ARGS...]
+    docker-compose -h|--help
+  
+  Options:
+    --verbose                 Show more output
+    --version                 Print version and exit
+    -f, --file FILE           Specify an alternate compose file (default: docker-compose.yml)
+    -p, --project-name NAME   Specify an alternate project name (default: directory name)
+  
+  Commands:
+    build     Build or rebuild services
+    help      Get help on a command
+    kill      Kill containers
+    logs      View output from containers
+    port      Print the public port for a port binding
+    ps        List containers
+    pull      Pulls service images
+    rm        Remove stopped containers
+    run       Run a one-off command
+    scale     Set number of containers for a service
+    start     Start services
+    stop      Stop services
+    restart   Restart services
+    up        Create and start containers
+```
+
 ## Referencias
 
 * **[The Docker UserGuide](https://docs.docker.com/userguide/)**
 * **[The Docker CommandLine](https://docs.docker.com/reference/commandline/cli/)**
 * **[The Dockerfile Reference](https://docs.docker.com/reference/builder/)**
+* **[The Docker Compose Reference](https://docs.docker.com/compose/)**
 
 Happy *Dockering*! :)

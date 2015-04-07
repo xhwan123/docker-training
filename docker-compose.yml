@@ -1,0 +1,14 @@
+redis:
+  image: redis:2.8
+sourcecode:
+  image: ubuntu
+  volumes:
+  - ".:/var/www"
+apache:
+  image: atrapalo/docker-tutorial-apache
+  ports:
+  - 80:80
+  volumes_from:
+  - "sourcecode"
+  links:
+  - redis
